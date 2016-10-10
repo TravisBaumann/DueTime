@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app'>
+<head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+
+<body ng-controller='MainCtrl as ctrl'>
+
+    <!-- navbar -->
+    <header>
+        <nav class="navbar navbar-default navbar-fixed-top menu">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="/duetime/" class="navbar-brand">
+Due Time
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    
+    <div class='container'>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-3">
+                <div class="task-list">
+                    
+                    <table class='table table-bordered'>
+                        <thead>
+                            <th>
+                                <a href ="#" ng-click='ctrl.sortBy("complete")'>
+                                    Completed
+                                </a>
+                                <span class="sortorder" ng-show='ctrl.order === "complete" ' ng-class="{reverse:ctrl.reverse}"></span>
+                            </th>
+                            <th>
+                                <a href ="#" ng-click='ctrl.sortBy("info")'>
+                                    Task
+                                </a>
+                                <span class="sortorder" ng-show='ctrl.order === "info" ' ng-class="{reverse:ctrl.reverse}"></span>
+                            </th>
+                            <th>
+                                <a href ="#" ng-click='ctrl.sortBy("dateDue")'>
+                                    Due Date
+                                </a>    
+                                <span class="sortorder" ng-show='ctrl.order === "dateDue" ' ng-class="{reverse:ctrl.reverse}"></span>
+                            </th>
+                            <th>
+                                <a href ="#" ng-click='ctrl.sortBy("dateAdded")'>
+                                    Added Date
+                                </a>    
+                                <span class="sortorder" ng-show='ctrl.order === "dateAdded" ' ng-class="{reverse:ctrl.reverse}"></span>
+                            </th>
+                        </thead>
+
+                        <tbody>
+
+
+
+                            <!-- list existing tasks -->
+                            <tr ng-repeat="task in ctrl.tasks" ng-class="{complete : task.complete}">
+                                <td class="complete-image">
+                                    <a href="#" ng-click="ctrl.toggleCompleteTask(task)">
+                                        <img src="uncomplete.png" alt="uncomplete" ng-show='task.complete == false'>
+                                        <img src="complete.png" alt="completed" ng-show='task.complete == true'>
+                                    </a>
+                                </td>
+                                <td>
+                                    {{task.info}}                           
+
+                                 </td> 
+                                <td>
+                                    {{task.dateDue | date:'fullDate'}}
+                                </td>
+                                <td>
+                                    {{task.dateAdded | date: 'fullDate'}}
+                                </td>
+                                <td>
+                                    <a href="#" ng-click="ctrl.deleteTask($index)">
+                                        X
+                                    </a>
+                                </td>
+                            </tr>
+
+
+
+
+                            <!-- add new task -->
+                            <form ng-submit='ctrl.addSavedTask()'>
+                                <tr>
+                                    <td>
+                                    </td>
+                                     <td>
+                                        <input type="text" class="form-control" id='new-task' placeholder="Describe task here." ng-model='ctrl.newTask.info'>                                 
+                                    </td>
+                                    <td>
+                                        <input type="date" class="form-control" id='new-task' ng-model='ctrl.newTask.dateDue'>
+                                    </td>
+                                    <td>
+                                        <input type="date" class='form-control' id='new-task' ng-model = 'ctrl.newTask.dateAdded'>
+                                    </td>
+                                </tr>    
+                        </tbody>
+                    </table>                
+
+                                <button class='btn btn-primary btn-block'>
+                                    Add Task 
+                                </button>                                
+                            </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!--test-->
+    <!-- <div class="well">
+        {{ ctrl.tasks | json }}
+    </div> -->
+
+        
+    <!-- footer -->
+    <nav class="page-footer navbar navbar-default navbar-fixed-bottom">
+      <div class="container">
+ 
+        <!-- success message -->
+        <div class='input-saved-alert' ng-show='ctrl.showTaskSaved'>
+            <div class='alert alert-success'>
+                Task Saved!
+            </div>
+        </div>
+ 
+        <footer class='footer-text'>
+            &copy;Works By Travis 2016
+        </footer>
+ 
+      </div>
+    </nav>
+
+    
+   
+
+     
+    
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- Angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+
+    <!-- Ramda -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.22.1/ramda.min.js"></script>
+
+    <!-- my JavaScript -->
+    <script src='app.js'></script>
+
+</body>
+</html>
+
+

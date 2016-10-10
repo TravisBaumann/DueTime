@@ -1,1 +1,1 @@
-This is the repository for my angular to-do list.
+This is the new repository for my angular to-do list.
