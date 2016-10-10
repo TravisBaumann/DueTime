@@ -45,7 +45,7 @@ Due Time
                             </th>
                             <th>
                                 <a href ="#" ng-click='ctrl.sortBy("dateDue")'>
-                                    Due Date
+                                    Due Date (unfinished)
                                 </a>    
                                 <span class="sortorder" ng-show='ctrl.order === "dateDue" ' ng-class="{reverse:ctrl.reverse}"></span>
                             </th>
@@ -65,8 +65,8 @@ Due Time
                             <tr ng-repeat="task in ctrl.tasks" ng-class="{complete : task.complete}">
                                 <td class="complete-image">
                                     <a href="#" ng-click="ctrl.toggleCompleteTask(task)">
-                                        <img src="uncomplete.png" alt="uncomplete" ng-show='task.complete == false'>
-                                        <img src="complete.png" alt="completed" ng-show='task.complete == true'>
+                                        <img src="uncomplete.png" alt="no" ng-show='task.complete == false'>
+                                        <img src="complete.png" alt="yes" ng-show='task.complete == true'>
                                     </a>
                                 </td>
                                 <td>
@@ -125,12 +125,7 @@ Due Time
     <nav class="page-footer navbar navbar-default navbar-fixed-bottom">
       <div class="container">
  
-        <!-- popup -->
-        <div class='input-saved-alert' ng-show='ctrl.showTaskSaved'>
-            <div class='alert alert-info'>
-                You saved your task!
-            </div>
-        </div>
+
  
         <footer class='footer-text'>
             &copy;Works By Travis 2016
@@ -151,7 +146,6 @@ Due Time
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.22.1/ramda.min.js"></script>
 
     <!-- JavaScript linkage  -->
     <script src='app.js'></script>

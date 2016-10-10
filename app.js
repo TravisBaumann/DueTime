@@ -30,9 +30,6 @@ function MainController (orderByFilter, $timeout) {
     };
 
 
-    // ctrl.editTask = function (index, key) {
-    //     ctrl.tasks[index] = "";
-    // };
 
 
      ctrl.addSavedTask = function() {
@@ -54,7 +51,7 @@ function MainController (orderByFilter, $timeout) {
         ctrl.showTaskSaved = true; 
         $timeout(function() {
             ctrl.showTaskSaved = false; 
-        }, 1500);
+        }, 2500);
     };
 
 
