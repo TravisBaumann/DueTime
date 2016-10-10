@@ -61,7 +61,7 @@ Due Time
 
 
 
-                            <!-- list existing tasks -->
+                            <!-- existing tasks -->
                             <tr ng-repeat="task in ctrl.tasks" ng-class="{complete : task.complete}">
                                 <td class="complete-image">
                                     <a href="#" ng-click="ctrl.toggleCompleteTask(task)">
@@ -74,7 +74,7 @@ Due Time
 
                                  </td> 
                                 <td>
-                                    {{task.dateDue | date:'fullDate'}}
+                                   "needs to be finished"
                                 </td>
                                 <td>
                                     {{task.dateAdded | date: 'fullDate'}}
@@ -120,20 +120,15 @@ Due Time
 
 
 
-    <!--test-->
-    <!-- <div class="well">
-        {{ ctrl.tasks | json }}
-    </div> -->
 
         
-    <!-- footer -->
     <nav class="page-footer navbar navbar-default navbar-fixed-bottom">
       <div class="container">
  
-        <!-- success message -->
+        <!-- popup -->
         <div class='input-saved-alert' ng-show='ctrl.showTaskSaved'>
-            <div class='alert alert-success'>
-                Task Saved!
+            <div class='alert alert-info'>
+                You saved your task!
             </div>
         </div>
  
@@ -152,13 +147,13 @@ Due Time
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-    <!-- Angular -->
+    <!-- Angular and Ramda -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 
-    <!-- Ramda -->
+
     <script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.22.1/ramda.min.js"></script>
 
-    <!-- my JavaScript -->
+    <!-- JavaScript linkage  -->
     <script src='app.js'></script>
 
 </body>
